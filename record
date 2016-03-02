@@ -1,0 +1,7 @@
+db.runCommand({"distinct":"wdj","key":"package name"})
+
+db.wdj.group({key:{app_second_category:true},initial:{num:0},$reduce:function(doc,prev){prev.num++}})
+
+db.wdj.find({"app_second_category":"全部游戏"}).pretty()
+
+mongoexport.exe -d mobilephone -c mobilephone --type=csv -q "{'type':'price'}" -f page-title,price,proId  -o e://mobilephone.data
