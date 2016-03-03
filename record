@@ -8,3 +8,5 @@ mongoexport.exe -d mobilephone -c mobilephone --type=csv -q "{'type':'price'}" -
 
 var lst = db.t1.find();
 while(lst.hasNext()) db.t2.insert(lst.next());
+
+db.mobilephone.find({"type":"param"}).forEach(function(x){db.mobilephoneParam.insert(x)})
