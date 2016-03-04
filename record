@@ -10,3 +10,5 @@ var lst = db.t1.find();
 while(lst.hasNext()) db.t2.insert(lst.next());
 
 db.mobilephone.find({"type":"param"}).forEach(function(x){db.mobilephoneParam.insert(x)})
+
+mongoimport -d userApp -c appList -f apk        --type=csv --file=result.change.apk.normal
