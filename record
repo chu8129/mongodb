@@ -14,3 +14,6 @@ db.mobilephone.find({"type":"param"}).forEach(function(x){db.mobilephoneParam.in
 mongoimport -d userApp -c appList -f apk        --type=csv --file=result.change.apk.normal
 
 db.appuserAist.renameCollection("userAppList")
+
+use wdj
+db.wdj.update({}, {$rename : {"package name" : "package_name"}}, false, true)
