@@ -41,6 +41,6 @@ for k in documentname.find():
         print 'first record key %s' % key
         keys[key]=1
 
-
+mongoexport.exe -d wdj -c checkapk -o e://checkapkWdjOnceTime.mongodb.collection
 
 
