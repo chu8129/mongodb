@@ -17,3 +17,30 @@ db.appuserAist.renameCollection("userAppList")
 
 use wdj
 db.wdj.update({}, {$rename : {"package name" : "package_name"}}, false, true)
+
+
+db.userapk.find().forEach( function(u) { u["package name"] = u["source_url"].replace("http://www.wandoujia.com/apps/", ""); db.userapk2.save(u); } );
+
+
+db.userapk.ensureIndex({"package name":1},{unique:true,dropDups:true})
+
+
+
+from pymongo import MongoClient
+client = MongoClient()
+db = client.wdj
+documentname = db.useapkChangeapk
+
+keys = {}
+for k in documentname.find():
+    key = k['apk']
+    if keys.has_key(key):
+        print 'duplicate key %s' % key
+        documentname.remove({'_id':k['_id']})
+    else:
+        print 'first record key %s' % key
+        keys[key]=1
+
+
+
+
